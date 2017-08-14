@@ -5,7 +5,7 @@ ARG UNIFI_VERSION=5.6.14-f7a900184a
 
 RUN export DEBIAN_FRONTEND='noninteractive' && \
     apt-get update && \
-    apt-get install -y --no-install-recommends mongodb-server && \
+    apt-get install -y --no-install-recommends mongodb-server jsvc && \
     wget -nv https://www.ubnt.com/downloads/unifi/$UNIFI_VERSION/unifi_sysvinit_all.deb && \
     dpkg --install unifi_sysvinit_all.deb && \
     rm unifi_sysvinit_all.deb && \
