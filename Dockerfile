@@ -1,11 +1,14 @@
 FROM praseodym/arm32v7-debian-oracle-java:jessie
 
-ARG suite=stable
+# Download Testing
+ARG UNIFI_VERSION=5.6.14-f7a900184a
+
 RUN export DEBIAN_FRONTEND='noninteractive' && \
-    echo "deb http://www.ubnt.com/downloads/unifi/debian $suite ubiquiti" > /etc/apt/sources.list.d/unifi.list && \
-    apt-key adv --keyserver keyserver.ubuntu.com --recv C0A52C50 && \
     apt-get update && \
-    apt-get install -y --no-install-recommends unifi mongodb-server && \
+    apt-get install -y --no-install-recommends mongodb-server && \
+    wget -nv https://www.ubnt.com/downloads/unifi/$UNIFI_VERSION/unifi_sysvinit_all.deb && \
+    dpkg --install unifi_sysvinit_all.deb && \
+    rm unifi_sysvinit_all.deb && \
     apt-get clean && \
     rm -rf /var/lib/apt/lists/*
 
