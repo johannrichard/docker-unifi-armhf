@@ -8,17 +8,17 @@ stable: build-stable push-stable
 testing: build-testing push-testing
 
 build-stable:
-	@docker build --no-cache --pull --build-arg suite=stable -t praseodym/unifi-armhf:unifi5 -t praseodym/unifi-armhf:stable -t praseodym/unifi-armhf:latest -t praseodym/unifi-armhf:${VERSION_STABLE} .
+	@docker build --no-cache --pull --build-arg suite=stable -t johannrichard/unifi-armhf:unifi5 -t johannrichard/unifi-armhf:stable -t johannrichard/unifi-armhf:latest -t johannrichard/unifi-armhf:${VERSION_STABLE} .
 
 push-stable:
-	@docker push praseodym/unifi-armhf:unifi5
-	@docker push praseodym/unifi-armhf:stable
-	@docker push praseodym/unifi-armhf:latest
-	@docker push praseodym/unifi-armhf:${VERSION_STABLE}
+	@docker push johannrichard/unifi-armhf:unifi5
+	@docker push johannrichard/unifi-armhf:stable
+	@docker push johannrichard/unifi-armhf:latest
+	@docker push johannrichard/unifi-armhf:${VERSION_STABLE}
 
 build-testing:
-	@docker build --no-cache --pull --build-arg suite=testing -t praseodym/unifi-armhf:testing -t praseodym/unifi-armhf:${VERSION_TESTING} .
+	@docker build --no-cache --pull --build-arg suite=testing -t johannrichard/unifi-armhf:testing -t johannrichard/unifi-armhf:${VERSION_TESTING} .
 
 push-testing:
-	@docker push praseodym/unifi-armhf:testing
-	@docker push praseodym/unifi-armhf:${VERSION_TESTING}
+	@docker push johannrichard/unifi-armhf:testing
+	@docker push johannrichard/unifi-armhf:${VERSION_TESTING}
